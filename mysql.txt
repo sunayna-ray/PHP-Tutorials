@@ -1,0 +1,332 @@
+Microsoft Windows [Version 6.3.9600]
+(c) 2013 Microsoft Corporation. All rights reserved.
+
+C:\Users\Windows 8>cd C:\xampp
+
+C:\xampp>mysql
+'mysql' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\xampp>cd mysql
+
+C:\xampp\mysql>cd bin
+
+C:\xampp\mysql\bin>mysql.exe
+ERROR 1045 (28000): Access denied for user 'ODBC'@'localhost' (using password: N
+O)
+
+C:\xampp\mysql\bin>mysql.exe root
+ERROR 1045 (28000): Access denied for user 'ODBC'@'localhost' (using password: N
+O)
+
+C:\xampp\mysql\bin>mysql.exe -u root
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 4
+Server version: 10.1.16-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2016, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+<<<<REST GOT CLEARED>>>>
+
+MariaDB [osp]> INSERT INTO berkeley VALUES(0, "Transaction safe");
+Query OK, 1 row affected (0.03 sec)
+
+MariaDB [osp]> INSERT INTO berkeley VALUES(1, "Originally dvpt at UC Berkeley");
+
+Query OK, 1 row affected (0.06 sec)
+
+MariaDB [osp]> INSERT INTO berkeley VALUES(2, "Sleepycat Software Inc created in
+ 1996");
+Query OK, 1 row affected (0.03 sec)
+
+MariaDB [osp]> INSERT INTO berkeley VALUES(3, "Example: CISCO Systems");
+Query OK, 1 row affected (0.05 sec)
+
+MariaDB [osp]> CREATE TABLE csv(
+    -> id INTEGER PRIMARY KEY,
+    -> tirle VARCHAR(80))
+    -> ENGINE=CSV;
+ERROR 1069 (42000): Too many keys specified; max 0 keys allowed
+MariaDB [osp]> CREATE TABLE CSV(
+    -> id INTEGER PRIMARY KEY,
+    -> tirle VARCHAR(80))
+    -> ENGINE=CSV;
+ERROR 1069 (42000): Too many keys specified; max 0 keys allowed
+MariaDB [osp]> CREATE TABLE CSV(
+    -> id INTEGER PRIMARY KEY,
+    -> tirle VARCHAR(20))
+    -> ENGINE=CSV;
+ERROR 1069 (42000): Too many keys specified; max 0 keys allowed
+MariaDB [osp]> SELECT name from student where credits=20 or 19;
++----------+
+| name     |
++----------+
+| Swati    |
+| Pratyush |
+| Digant   |
+| Sunayna  |
+| Arnav    |
++----------+
+5 rows in set (0.06 sec)
+
+MariaDB [osp]> SELECT name from student where credits=20 OR 19;
++----------+
+| name     |
++----------+
+| Swati    |
+| Pratyush |
+| Digant   |
+| Sunayna  |
+| Arnav    |
++----------+
+5 rows in set (0.00 sec)
+
+MariaDB [osp]> SELECT * FROM student;
++----------+-----+------+---------+
+| name     | reg | host | credits |
++----------+-----+------+---------+
+| Swati    | 11  |    0 |      25 |
+| Pratyush | 118 |    0 |      25 |
+| Digant   | 172 |    0 |      20 |
+| Sunayna  | 225 |    0 |      25 |
+| Arnav    | 44  |    0 |      25 |
++----------+-----+------+---------+
+5 rows in set (0.00 sec)
+
+MariaDB [osp]> SELECT name from student where credits=20 OR credits=19;
++--------+
+| name   |
++--------+
+| Digant |
++--------+
+1 row in set (0.01 sec)
+
+MariaDB [osp]> SELECT count(name) from student where credits=20 OR credits=19;
++-------------+
+| count(name) |
++-------------+
+|           1 |
++-------------+
+1 row in set (0.03 sec)
+
+MariaDB [osp]> SELECT count(name) from student where credits>20 order by name;
++-------------+
+| count(name) |
++-------------+
+|           4 |
++-------------+
+1 row in set (0.00 sec)
+
+MariaDB [osp]> SELECT (name) from student where credits>20 order by name;
++----------+
+| name     |
++----------+
+| Arnav    |
+| Pratyush |
+| Sunayna  |
+| Swati    |
++----------+
+4 rows in set (0.00 sec)
+
+MariaDB [osp]> SELECT (name) from student where credits>20 order by name DESC;
++----------+
+| name     |
++----------+
+| Swati    |
+| Sunayna  |
+| Pratyush |
+| Arnav    |
++----------+
+4 rows in set (0.00 sec)
+
+MariaDB [osp]> SELECT * from student where credits>20 order by reg ASC, name DES
+C;
++----------+-----+------+---------+
+| name     | reg | host | credits |
++----------+-----+------+---------+
+| Swati    | 11  |    0 |      25 |
+| Pratyush | 118 |    0 |      25 |
+| Sunayna  | 225 |    0 |      25 |
+| Arnav    | 44  |    0 |      25 |
++----------+-----+------+---------+
+4 rows in set (0.00 sec)
+
+MariaDB [osp]> SELECT * from student where name like "A%";
++-------+-----+------+---------+
+| name  | reg | host | credits |
++-------+-----+------+---------+
+| Arnav | 44  |    0 |      25 |
++-------+-----+------+---------+
+1 row in set (0.05 sec)
+
+MariaDB [osp]> SELECT * from student where name like "A%" OR name like "S%";
++---------+-----+------+---------+
+| name    | reg | host | credits |
++---------+-----+------+---------+
+| Swati   | 11  |    0 |      25 |
+| Sunayna | 225 |    0 |      25 |
+| Arnav   | 44  |    0 |      25 |
++---------+-----+------+---------+
+3 rows in set (0.00 sec)
+
+MariaDB [osp]> INSERT into student VALUES('Swati', 0012, 0, 17);
+Query OK, 1 row affected (0.08 sec)
+
+MariaDB [osp]> SELECT name from student;
++----------+
+| name     |
++----------+
+| Swati    |
+| Pratyush |
+| Swati    |
+| Digant   |
+| Sunayna  |
+| Arnav    |
++----------+
+6 rows in set (0.00 sec)
+
+MariaDB [osp]> SELECT distinct name from student;
++----------+
+| name     |
++----------+
+| Swati    |
+| Pratyush |
+| Digant   |
+| Sunayna  |
+| Arnav    |
++----------+
+5 rows in set (0.00 sec)
+
+MariaDB [osp]> SELECT name, count(*) from student;
++-------+----------+
+| name  | count(*) |
++-------+----------+
+| Swati |        6 |
++-------+----------+
+1 row in set (0.00 sec)
+
+MariaDB [osp]> SELECT name, count(*) from student group by name;
++----------+----------+
+| name     | count(*) |
++----------+----------+
+| Arnav    |        1 |
+| Digant   |        1 |
+| Pratyush |        1 |
+| Sunayna  |        1 |
+| Swati    |        2 |
++----------+----------+
+5 rows in set (0.00 sec)
+
+MariaDB [osp]> SELECT name, count(*) from student group by reg;
++----------+----------+
+| name     | count(*) |
++----------+----------+
+| Swati    |        1 |
+| Pratyush |        1 |
+| Swati    |        1 |
+| Digant   |        1 |
+| Sunayna  |        1 |
+| Arnav    |        1 |
++----------+----------+
+6 rows in set (0.00 sec)
+
+MariaDB [osp]> SELECT * from student where name like "_A%";
+Empty set (0.00 sec)
+
+MariaDB [osp]> SELECT * from student where name like "_r%";
++----------+-----+------+---------+
+| name     | reg | host | credits |
++----------+-----+------+---------+
+| Pratyush | 118 |    0 |      25 |
+| Arnav    | 44  |    0 |      25 |
++----------+-----+------+---------+
+2 rows in set (0.00 sec)
+
+MariaDB [osp]> SELECT * from student where name like "%a%";
++----------+-----+------+---------+
+| name     | reg | host | credits |
++----------+-----+------+---------+
+| Swati    | 11  |    0 |      25 |
+| Pratyush | 118 |    0 |      25 |
+| Swati    | 12  |    0 |      17 |
+| Digant   | 172 |    0 |      20 |
+| Sunayna  | 225 |    0 |      25 |
+| Arnav    | 44  |    0 |      25 |
++----------+-----+------+---------+
+6 rows in set (0.00 sec)
+
+MariaDB [osp]> SELECT lcase(name) from student;
++-------------+
+| lcase(name) |
++-------------+
+| swati       |
+| pratyush    |
+| swati       |
+| digant      |
+| sunayna     |
+| arnav       |
++-------------+
+6 rows in set (0.03 sec)
+
+MariaDB [osp]> SELECT name, lenght(name) from student;
+ERROR 1305 (42000): FUNCTION osp.lenght does not exist
+MariaDB [osp]> SELECT name, length(name) from student;
++----------+--------------+
+| name     | length(name) |
++----------+--------------+
+| Swati    |            5 |
+| Pratyush |            8 |
+| Swati    |            5 |
+| Digant   |            6 |
+| Sunayna  |            7 |
+| Arnav    |            5 |
++----------+--------------+
+6 rows in set (0.00 sec)
+
+MariaDB [osp]> select now();
++---------------------+
+| now()               |
++---------------------+
+| 2017-08-19 08:28:35 |
++---------------------+
+1 row in set (0.00 sec)
+
+MariaDB [osp]> select month(now());
++--------------+
+| month(now()) |
++--------------+
+|            8 |
++--------------+
+1 row in set (0.03 sec)
+
+MariaDB [osp]> select last_day(now());
++-----------------+
+| last_day(now()) |
++-----------------+
+| 2017-08-31      |
++-----------------+
+1 row in set (0.00 sec)
+
+MariaDB [osp]> select last_day('2007-11-23');
++------------------------+
+| last_day('2007-11-23') |
++------------------------+
+| 2007-11-30             |
++------------------------+
+1 row in set (0.00 sec)
+
+MariaDB [osp]> select day(last_day('2007-11-23'));
++-----------------------------+
+| day(last_day('2007-11-23')) |
++-----------------------------+
+|                          30 |
++-----------------------------+
+1 row in set (0.03 sec)
+
+MariaDB [osp]> select day_of_year(last_day('2007-11-23'));
+ERROR 1305 (42000): FUNCTION osp.day_of_year does not exist
+MariaDB [osp]> select day_of_year('2007-11-23');
+ERROR 1305 (42000): FUNCTION osp.day_of_year does not exist
+MariaDB [osp]>

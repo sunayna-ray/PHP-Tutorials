@@ -1,0 +1,60 @@
+<?php
+
+define("Ray", "Sunayna");
+$abc="Ray";
+echo "Ray"."<br/>";
+echo $abc."<br/>";
+echo constant("Ray")."<br/>";
+echo constant($abc);
+
+if (5=="5.0")echo "Yes <br/>";
+else echo "No <br/>";
+
+if (5==="5.0")echo "Yes <br/>";
+else echo "No <br/>";
+
+$name="Sunayna"; $age=20;
+echo '$name is $age'.'<br/>';
+echo "$name is $age";
+
+$a1 = "5bar"; // string
+$a2=1;
+$a3=1;
+$a4=1;
+$a5=1;
+$bar = true;   // boolean
+$bar1 = true;
+
+settype($a1, "integer");
+settype($a2, "float");
+settype($a3, "string");
+settype($bar, "string");
+settype($a4, "null");
+settype($bar1, "array");
+settype($a3, "object"); //gives error: Catchable fatal error: Object of class stdClass could not be converted to string.
+
+echo "$a1 <br/> $a2 <br/> $bar <br/> $a4 <br/>";
+print_r($bar1);
+
+echo "<br/>----------------------------------------------<br/>";
+$var = "true";
+settype($var, 'bool');
+echo $var."<br/>";
+
+$var = "false";
+settype($var, 'bool');
+echo $var."<br/>";
+
+$var = "";
+settype($var, 'bool');
+settype($var, 'integer');
+echo $var;
+
+$arr= array(1, 2, 3);
+$data = array(true, 1, 1.,"1", $arr, NULL, new stdClass);
+
+foreach ($data as $value) {
+    echo gettype($value)."<br/>";
+}
+
+?>
